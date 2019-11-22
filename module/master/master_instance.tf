@@ -1,15 +1,16 @@
 
-
 resource "aws_instance" "pt_master_module" {
   ami                    = "ami-0ca4ee4403ecb3a4e"
   instance_type          = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.sg_jenkins.id}"]
   # aws_security_group = "${aws_security_group.sg_jenkins.name}"
-
+  key_name = "master_key"
   tags = {
     Name = "Jenkins Master_PT"
   }
 }
+
+
 
 resource "aws_key_pair" "deployer" {
   key_name   = "admin-key"
