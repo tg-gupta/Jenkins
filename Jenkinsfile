@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+         stage('init') {
+            steps {
+                sh 'terraform init -no-color'
+            }
+        }
         stage('destroy') {
             steps {
                 input("Ready to proceed?")
