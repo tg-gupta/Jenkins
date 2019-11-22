@@ -13,7 +13,7 @@ resource "aws_instance" "jenkins_master" {
   # aws_security_group = "${aws_security_group.sg_jenkins.name}"
 
   tags = {
-    Name = "Jenkins Master"
+    Name = "Jenkins Master_PT"
   }
 }
 
