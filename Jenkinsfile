@@ -12,11 +12,6 @@ pipeline {
                 sh 'terraform destroy -auto-approve'
             }
         }
-        stage('init') {
-            steps {
-                sh 'terraform init -no-color'
-            }
-        }
         stage('plan') {
             steps {
                 sh 'terraform plan -no-color -out tf.plan'
