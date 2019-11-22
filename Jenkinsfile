@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('destroy') {
+            steps {
+                input("Ready to proceed?")
+                sh 'terraform destroy -auto-approve'
+            }
+        }
         stage('init') {
             steps {
                 sh 'terraform init -no-color'
@@ -16,13 +22,14 @@ pipeline {
                 sh 'terraform apply -auto-approve tf.plan'
             }
         }
-        stage('Node-connect'){
-            steps {
+        
+        // stage('Node-connect'){
+        //     steps {
                 
-                sh 'create-node.sh'
-                sh 'connect-node.sh'
+        //         sh 'create-node.sh'
+        //         sh 'connect-node.sh'
                 
-              }    
+        //       }    
 
 
          }
