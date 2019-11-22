@@ -16,6 +16,15 @@ pipeline {
                 sh 'terraform apply -auto-approve tf.plan'
             }
         }
-    
+        stage('Node-connect'){
+            steps {
+                
+                sh 'create-node.sh'
+                sh 'connect-node.sh'
+                
+              }    
+
+
+         }
         }
 }
