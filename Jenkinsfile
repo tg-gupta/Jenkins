@@ -6,12 +6,7 @@ pipeline {
                 sh 'terraform init -no-color'
             }
         }
-        stage('destroy') {
-            steps {
-                input("Ready to proceed?")
-                sh 'terraform destroy -auto-approve'
-            }
-        }
+       
         stage('plan') {
             steps {
                 sh 'terraform plan -no-color -out tf.plan'
@@ -20,6 +15,12 @@ pipeline {
         stage('apply') {
             steps {
                 sh 'terraform apply -auto-approve tf.plan'
+            }
+        }
+         stage('destroy') {
+            steps {
+                input("Ready to proceed?")
+                sh 'terraform destroy -auto-approve'
             }
         }
         
