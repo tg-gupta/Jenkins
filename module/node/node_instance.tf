@@ -4,7 +4,7 @@ resource "aws_instance" "pt_node_module" {
   instance_type          = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.sg_jenkins.id}"]
   # aws_security_group = "${aws_security_group.sg_jenkins.name}"
-  key_name = "node"
+  key_name = "node-key"
   tags = {
     Name = "Jenkins Node_PT"
   }
