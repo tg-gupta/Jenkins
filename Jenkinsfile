@@ -1,21 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('init') {
+        stage('destroy') {
             steps {
-                sh 'terraform init -no-color'
+                sh 'terraform destroy -no-color'
             }
         }
-        stage('plan') {
-            steps {
-                sh 'terraform plan -no-color -out tf.plan'
-            }
-        }
-        stage('apply') {
-            steps {
-                sh 'terraform apply -auto-approve tf.plan'
-            }
-        }
-    
-        }
+        
 }
